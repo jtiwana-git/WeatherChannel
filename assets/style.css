@@ -1,5 +1,7 @@
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    
 }
 
 /* Header */
@@ -10,9 +12,16 @@ header {
 .container{
     margin: 0;
     display: flex;
-    flex-direction: column;
     border: 1px solid black;
     width: 100%;
     
 }
+#currentWeather{
+    width: 300px;
+    border: 1px solid red;
+    display: flex;
+    display: inline;
+    text-align: center;
+}
+
 

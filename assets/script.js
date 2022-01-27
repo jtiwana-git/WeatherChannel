@@ -23,6 +23,8 @@ searchEl.addEventListener("click", (event)=>{
     const city = citySearchEl.value;
     console.log(city);
     getCurrentWeather(city);
+
+
 });
 
 function getCurrentWeather(city){
@@ -75,25 +77,24 @@ currentWeatherId.append(currentCity, currentTemp, tempText, currentWind, windTex
 
 }
 
-
-// 5 days forcast
-
-function fiveDayForecast(city) {
-    console.log(city);
-
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b8763f38b9f069958af940db06d7fbe0&units=metric`).then(function (res) {
+function forecast() {
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Birmingham&appid=b8763f38b9f069958af940db06d7fbe0").then(function (res) {
         return res.json();
     })
-    .then(function (data) {
-        // console.log(data);
-        fiveDayForecast(data);
-
-        console.log(forecast);
-
+    .then(function(data) {
+    
+    for (var i = 0; i < 5;i++)
 
     });
-    
-    }
+
+}
+
+
+
+
+
+
+
 
 
 
