@@ -7,6 +7,8 @@ body{
 /* Header */
 header {
     text-align: center;
+    background-color: royalblue;
+
 }
 
 .container{
@@ -14,6 +16,7 @@ header {
     display: flex;
     border: 1px solid black;
     width: 100%;
+    height: 800px;
     
 }
 #currentWeather{
@@ -21,7 +24,21 @@ header {
     border: 1px solid red;
     display: flex;
     display: inline;
-    text-align: center;
+    position: absolute;
+    left: 300px;
+    top:  0;
+}
+
+.uvHigh{
+    color: red;
+}
+
+.uvMed {
+    color: orange;
+}
+
+.uvLow{
+    color: green;
 }
 
 
