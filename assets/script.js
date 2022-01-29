@@ -3,11 +3,8 @@
 const searchEl = document.getElementById("search");
 const citySearchEl = document.getElementById("searchcity");
 const dayOneEl = document.getElementById("dayone");
-const dayTwoEl = document.getElementById("daytwo");
-const dayThreeEl = document.getElementById("daythree");
-const dayFourEl = document.getElementById("dayfour");
-const dayFiveEl = document.getElementById("dayfive");
 const currentIconId = document.getElementById("currentIcon");
+const pastSearchesBtnEl = document.getElementsByClassName("pastSearchesBtn")
 
 
 searchEl.addEventListener("click", (event)=>{
@@ -44,39 +41,34 @@ console.log(weather);
 
 // Current Icon
 currentIconId.setAttribute("src", `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
-currentWeatherId.append(currentIconId);
+// currentWeatherId.append();
 
 
 // Current City
-const currentCity = document.createElement("h2");
+const currentCity = document.createElement("h4");
 currentCity.textContent = "City "+weather.name;
 
 // date
-
-const currentDate = document.createElement("h2");
-currentDate.textContent = "Date "+weather.dt*1000(format("DDDD DDD MMM YY"));
-
+const currentDate =  document.createElement("h4")
+currentDate.textContent= moment(weather.dt.value).format("DD MMM YYYY");
 
 
 // Current City Temp
 const currentTemp = document.createElement("h5");
-const tempText = document.createElement("p");
-currentTemp.textContent = "Temp";
-tempText.textContent = weather.main.temp;
+const tempText = document.createElement("h5");
+tempText.textContent = "Temp: " + weather.main.temp+"°F";
 
 // Current City Wind 
-const currentWind = document.createElement("h2");
-const windText = document.createElement("p");
-currentWind.textContent = "Wind";
-windText.textContent = weather.wind.speed+" MPH";
+const currentWind = document.createElement("h5");
+const windText = document.createElement("h5");
+windText.textContent = "Wind: " +  weather.wind.speed+" MPH";
 
 // Current City Humidty
-const currentHum = document.createElement("h2");
-const humText = document.createElement("p");
-currentHum.textContent = "Humidity";
-humText.textContent = weather.main.humidity+" %";
+const currentHum = document.createElement("h5");
+const humText = document.createElement("h5");
+humText.textContent =  "Humidity: " +weather.main.humidity+" %";
 
-currentWeatherId.append(currentCity, currentTemp, currentDate, tempText, currentWind, windText, currentHum, humText);
+currentWeatherId.append(currentIconId, currentCity, currentDate, currentTemp,tempText, currentWind, windText, currentHum, humText);
 
 }
 
@@ -92,8 +84,31 @@ function daily(lon, lat) {
         console.log(data);
         displayForecast(data);
         // UV Index Current
-        const uvIndex = document.createElement("p");
-        uvIndex.textContent=data.current.uvi;
+        const uvIndex = document.createElement("p")
+        uvIndex.textContent="UV: " +data.current.uvi+ " %";
+        const uvIndexNum = data.current.uvi;
+      
+        // Changing uv colors based on uv index levels
+        if(uvIndexNum <=2){
+            console.log("Levels 0 to 2");
+            uvIndex.style.color = "green";
+        }else if(uvIndexNum >=3 && uvIndexNum<=5){
+            console.log("Levels 3 to 5");
+            uvIndex.style.color = "orange";
+    
+        }else if(uvIndexNum >6 && uvIndexNum <=7){
+            console.log("Levels 6 to 7");
+            uvIndex.style.color = "orangered";
+        }else if(uvIndexNum >=8 && uvIndexNum <=10){
+            console.log("Levels 8 to 10");
+            uvIndex.style.color = "purple";
+           
+        }
+        else if(uvIndexNum >11){
+            console.log("Levels 11+");
+                   };
+
+
         currentWeatherId.append(uvIndex);
   
 
@@ -102,11 +117,14 @@ function daily(lon, lat) {
 function displayForecast(data){
     const forecast = 5;
         for (var i=0;i < forecast; i++){
+    
     const iconImage = document.createElement("img");
     const column = document.createElement("div");
-    column.setAttribute("class", "col-5");
-    const dailyTemp = document.createElement("p");
-    const dailyHum =document.createElement("p");
+    column.setAttribute("class", "col");
+    const dailyDate = document.createElement("h6");
+    const dailyTemp = document.createElement("h6");
+    const dailyHum =document.createElement("h6");
+    const dailyWind = document.createElement("h6");
     const card = document.createElement("div");
     card.setAttribute("class", "card");
     const cardBody = document.createElement("div");
@@ -115,10 +133,15 @@ function displayForecast(data){
     dailyTemp.setAttribute("class","card-text");
     dailyHum.setAttribute("class","card-text");
 
-    dailyTemp.textContent = data.daily[i].temp.day;
-    dailyHum.textContent = data.daily[i].humidity;
+
+// currentDate.textContent= moment(weather.dt.value).format("D MMM YYYY");
+
+    dailyDate.textContent = moment(data.daily[i].dt*1000).format("D MMM YYYY");
+    dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
+    dailyWind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+    dailyHum.textContent = "Humidity: " +  data.daily[i].humidity;
     iconImage.setAttribute("src", `http://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`)
-    cardBody.append(dailyTemp, dailyHum);
+    cardBody.append(dailyDate, dailyTemp, dailyWind, dailyHum);
     card.append(iconImage, cardBody);
     column.append(card)
     forecastEl.append(column);
@@ -126,8 +149,12 @@ function displayForecast(data){
 
     }
 
-
 }
+
+
+
+
+
 
 
 

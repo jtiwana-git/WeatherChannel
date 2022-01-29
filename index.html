@@ -10,57 +10,50 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     ></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     
     <title>5 Day Forcast</title>
 </head>
 <body>
     <header><h1>Weather Dashboard</h1></header>
 
-<div class="container">  <!--DIV 1-->
-     <!-- Search City -->
-  <div class="card" style="width: 18rem;"> <!--DIV 2-->
+
+
+    <div class="container"> 
     <div class="col"> <!--DIV 3-->
-      <form id="weatherform">
       <h3>Search for a City</h3>
       <input id="searchcity" type="text"></input>
       <button id="search" type="submit" class="btn btn-secondary">Search</button>
-      </form>
      <!-- History from searches -->
-  <form id="history">
-    <input type="text" readonly="true" class="form-control d-block bg-white">
-  </form>
-           
-            <!-- Current City day forcast -->
-  <div id="currentWeather" class="card" style="width: 18rem;"> <!--DIV 4-->
-    <img id="currentIcon" class="card-img-top">
+     <!-- <div class="pastSearchesBtn" id="pastSearchesBtn">
+      <button class="d-flex btn-light recentSearch" data-city type="submit"></button>
+    </div> -->
       
-</div>
 
+       
+            <!-- Current forecast -->
+  <div id="currentWeather" class="card one" style="width: 
+  50rem; height: 20rem; line-height: 0cm;"> <!--DIV 4-->
+    <img style="width: 100px; height: 100px;display: flex; justify-content: right;" id="currentIcon" class="card-img-top">
+  </div>
+  </div>
+  
+<!-- 5 day forecast -->
 <div class="container">
 <div class="row forecast"></div>
 
 
 
 
-<!-- <div id="dayone" class="card forecast" style="width: 18rem;">
-  <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="...">
-  </div>
 
-  <div id="daytwo" class="card forecast" style="width: 18rem;"> 
-    <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="...">
-  </div>
-
-    <div id="daythree" class="card forecast" style="width: 18rem;"> 
-      <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="...">
-    </div>
-
-      <div id="dayfour" class="card forecast" style="width: 18rem;">
-        <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="...">
-      </div>
-          
-        <div id="dayfive" class="card forecast" style="width: 18rem;">
-          <img src=" http://openweathermap.org/img/wn/10d@2x.png" class="card-img-top" alt="...">
-        </div> -->
 </div>
      
     <script src="./assets/script.js"></script>

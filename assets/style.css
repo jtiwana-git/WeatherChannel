@@ -1,6 +1,28 @@
+
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
+    background-color: lightgrey;
+    display: inline-flexbox;
+        
+}
+
+h3{
+    display: inline-flex;
+    text-align: start;
+    position: absolute;
+}
+
+input{
+    display: inline-flex;
+    position: absolute;
+    top: 127px;
+}
+
+button{
+    display: inline-flex;
+    position: absolute;
+    top: 160px;
     
 }
 
@@ -11,34 +33,57 @@ header {
 
 }
 
-.container{
-    margin: 0;
-    display: flex;
-    border: 1px solid black;
-    width: 100%;
-    height: 800px;
+#currentWeather.card{
+    display: inline-flex;
+    position: absolute;
+    top: 70px;
+    left: 400px;
+
+
+}
+
+div.card {
+    flex-direction: column;
+    width: 150px;
+    display: inline-flex;
+    position: absolute;
+    top: 400px;
+    background-color: gray;    
+}
+    
+
+
+
+/* 1 to 2
+.uvLow{
+    color:green;
     
 }
-#currentWeather{
-    width: 300px;
-    border: 1px solid red;
-    display: flex;
-    display: inline;
-    position: absolute;
-    left: 300px;
-    top:  0;
-}
 
-.uvHigh{
-    color: red;
-}
-
-.uvMed {
+/* 3 to 5 */
+/* .uvMod {
     color: orange;
-}
+    font-style: bold;
+} */
 
-.uvLow{
-    color: green;
-}
+/* 6 to 7 */
+/* .uvHigh{
+    color: orangered;
+    font-style: bold;
+} */
+
+/* 8 to 10 */
+/* .uvVeryHigh{
+    color: red;
+    font-style: bold;
+} */
+
+/*11+*/
+/* .uvExtreme{
+    color: purple;
+    font-style: bold;
+} */ */
+
+
 
 
