@@ -51,18 +51,14 @@ currentCity.textContent = "City "+weather.name;
 // date
 const currentDate =  document.createElement("h4")
 currentDate.textContent= moment(weather.dt.value).format("DD MMM YYYY");
-
-
 // Current City Temp
 const currentTemp = document.createElement("h5");
 const tempText = document.createElement("h5");
 tempText.textContent = "Temp: " + weather.main.temp+"°F";
-
 // Current City Wind 
 const currentWind = document.createElement("h5");
 const windText = document.createElement("h5");
 windText.textContent = "Wind: " +  weather.wind.speed+" MPH";
-
 // Current City Humidty
 const currentHum = document.createElement("h5");
 const humText = document.createElement("h5");
@@ -84,7 +80,7 @@ function daily(lon, lat) {
         console.log(data);
         displayForecast(data);
         // UV Index Current
-        const uvIndex = document.createElement("p")
+        const uvIndex = document.createElement("h5")
         uvIndex.textContent="UV: " +data.current.uvi+ " %";
         const uvIndexNum = data.current.uvi;
       
@@ -150,6 +146,8 @@ function displayForecast(data){
     }
 
 }
+
+// 
 
 
 
