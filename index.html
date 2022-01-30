@@ -11,42 +11,44 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
     ></script>
 
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <title>5 Day Forcast</title>
 </head>
 <body>
-    <header class="container-heading">
-      <h1>Weather Dashboard</h1>
-    </header>
+  <header><h1>Weather Dashboard</h1></header>
 
-    <div class="container"> 
-    <div class="col"> <!--DIV 3-->
-      <h3>Search for a City</h3>
-      <input id="searchcity" type="text"></input>
-      <button id="search" type="submit" class="btn btn-secondary">Search</button>
-     <!-- History from searches -->
-     <!-- <div class="pastSearchesBtn" id="pastSearchesBtn">
-      <button class="d-flex btn-light recentSearch" data-city type="submit"></button>
-    </div> -->
-      
 
-       
-            <!-- Current forecast -->
 
-  <div id="currentWeather" class="card one" style="width: 
-  50rem; height: 35rem; line-height: 0cm;"> <!--DIV 4-->
-    <img style="width: 100px; height: 100px;display: flex; justify-content: right;" id="currentIcon" class="card-img-top">
-  </div>
-  </div>
+  <div class="container"> 
+    <!--Added Row to help put container apart-->
+    <div class="row">
+       <!--Added column size to help put search input and card apart-->
+  <div class="col-md-3"> <!--DIV 3-->
+    <h3>Search for a City</h3>
+    <input id="searchcity" type="text"> 
+    <button id="search" type="submit" class="btn btn-secondary">Search</button>
+<!-- Recent Searches -->
+<ul class="list-group">
+  <li id = "pastSearch" class="list-group-item disabled" aria-disabled="true">A disabled item</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+  <li class="list-group-item">A fourth item</li>
+  <li class="list-group-item">And a fifth one</li>
+</ul>
   
+</div>
+
+     
+          <!-- Current forecast -->
+<!--Added  second column just for the card-->
+<div class="col-md-9">
+<div id="currentWeather" class="cardone">
+  <img style="width: 100px; height: 100px;display: flex; justify-content: right;" id="currentIcon" class="card-img-top">
+</div>
+</div>
+</div>
+
 <!-- 5 day forecast -->
 <div class="container">
 <div class="row forecast"></div>
@@ -56,7 +58,7 @@
 
 
 </div>
-     
-    <script src="./assets/script.js"></script>
-</body>
-</html>
+   
+  <script src="./assets/script.js"></script>
+
+</div></body>

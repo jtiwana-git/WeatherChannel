@@ -1,3 +1,23 @@
+The styling needs to be finished off and also the recent searches needs to be added on
+
+I am getting there slowly - learning  abit more
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 06 Server-Side APIs: Weather Dashboard
 
 ## Your Task

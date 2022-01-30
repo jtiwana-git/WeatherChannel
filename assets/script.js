@@ -1,10 +1,9 @@
 
 
 const searchEl = document.getElementById("search");
-const citySearchEl = document.getElementById("searchcity");
-const dayOneEl = document.getElementById("dayone");
+let citySearchEl = document.getElementById("searchcity");
 const currentIconId = document.getElementById("currentIcon");
-const pastSearchesBtnEl = document.getElementsByClassName("pastSearchesBtn")
+const local_Key = "CitySearches";
 
 
 searchEl.addEventListener("click", (event)=>{
@@ -12,6 +11,7 @@ searchEl.addEventListener("click", (event)=>{
     const city = citySearchEl.value;
     console.log(city);
     getCurrentWeather(city);
+    storage(citySearchEl);
   
 
 });
@@ -29,15 +29,19 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b8763f38b
     const lat = data.coord.lat;
     displayWeather(data);
     daily(lon, lat);
+  
+
 });
 
 }
+
 
 // Current Weather conditons
 const currentWeatherId = document.getElementById("currentWeather");
 
 function displayWeather(weather) {
 console.log(weather);
+
 
 // Current Icon
 currentIconId.setAttribute("src", `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
@@ -147,7 +151,20 @@ function displayForecast(data){
 
 }
 
-// 
+// Local storage
+const recentSearchEl = document.getElementById("pastSearch");
+
+function storage (citySearchEl) {
+
+
+    
+    localStorage.setItem("Recent", citySearchEl.value);
+ 
+ 
+    debugger;
+    
+}
+
 
 
 

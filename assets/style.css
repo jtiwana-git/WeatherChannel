@@ -1,88 +1,48 @@
+*{
+    box-sizing: border-box;
+}
 
 body{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 100%;
-    background-color: lightgrey;
-    display: inline-flexbox;
-        
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-h3{
-    display: inline-flex;
-    text-align: start;
-    position: absolute;
-}
-
-input{
-    display: inline-flex;
-    position: absolute;
-    top: 127px;
-}
-
-button{
-    display: inline-flex;
-    position: absolute;
-    top: 160px;
-    
-}
-
-/* Header */
-header {
+h1{
     text-align: center;
-    background-color: gray;  
-
+    color: orangered;
 }
 
-#currentWeather.card{
-    display: inline-flex;
-    position: absolute;
-    top: 90px;
-    left: 400px;
 
 
+/* FIVE DAY FORCE */
+div.col img {
+width: 100px;
+height: 100px;
 }
 
 div.card {
-    flex-direction: column;
-    width: 150px;
-    display: inline-flex;
-    position: absolute;
-    top: 400px;
-    background-color: gray;    
+border: 2px solid gray;
+display: flex;
+position: relative;
+top: 100px;
+left: 60px;
+flex-wrap: wrap;
 }
+
+#currentWeather.cardone{
+position: relative;
+left: 100px;
+}
+
+#search.btn {
+    position: relative;
+    left: 9px;
+    bottom: 3px;
+} 
+
     
 
 
 
-/* 1 to 2
-.uvLow{
-    color:green;
-    
-}
-
-/* 3 to 5 */
-/* .uvMod {
-    color: orange;
-    font-style: bold;
-} */
-
-/* 6 to 7 */
-/* .uvHigh{
-    color: orangered;
-    font-style: bold;
-} */
-
-/* 8 to 10 */
-/* .uvVeryHigh{
-    color: red;
-    font-style: bold;
-} */
-
-/*11+*/
-/* .uvExtreme{
-    color: purple;
-    font-style: bold;
-} */ */
 
 
 
