@@ -11,7 +11,7 @@ searchEl.addEventListener("click", (event)=>{
     const city = citySearchEl.value;
     console.log(city);
     getCurrentWeather(city);
-    storage(citySearchEl);
+    storage(city);
   
 
 });
@@ -56,19 +56,19 @@ currentCity.textContent = "City "+weather.name;
 const currentDate =  document.createElement("h4")
 currentDate.textContent= moment(weather.dt.value).format("DD MMM YYYY");
 // Current City Temp
-const currentTemp = document.createElement("h5");
+// const currentTemp = document.createElement("h5");
 const tempText = document.createElement("h5");
 tempText.textContent = "Temp: " + weather.main.temp+"°F";
 // Current City Wind 
-const currentWind = document.createElement("h5");
+// const currentWind = document.createElement("h5");
 const windText = document.createElement("h5");
 windText.textContent = "Wind: " +  weather.wind.speed+" MPH";
 // Current City Humidty
-const currentHum = document.createElement("h5");
+// const currentHum = document.createElement("h5");
 const humText = document.createElement("h5");
 humText.textContent =  "Humidity: " +weather.main.humidity+" %";
 
-currentWeatherId.append(currentIconId, currentCity, currentDate, currentTemp,tempText, currentWind, windText, currentHum, humText);
+currentWeatherId.append(currentIconId, currentCity, currentDate,tempText, windText, humText);
 
 }
 
@@ -90,21 +90,21 @@ function daily(lon, lat) {
       
         // Changing uv colors based on uv index levels
         if(uvIndexNum <=2){
-            console.log("Levels 0 to 2");
+            console.log(uvIndexNum);
             uvIndex.style.color = "green";
-        }else if(uvIndexNum >=3 && uvIndexNum<=5){
+        }else if(uvIndexNum >= 3 && uvIndexNum <= 5){
             console.log("Levels 3 to 5");
             uvIndex.style.color = "orange";
     
-        }else if(uvIndexNum >6 && uvIndexNum <=7){
+        }else if(uvIndexNum > 6 && uvIndexNum <= 7){
             console.log("Levels 6 to 7");
             uvIndex.style.color = "orangered";
-        }else if(uvIndexNum >=8 && uvIndexNum <=10){
+        }else if(uvIndexNum >= 8 && uvIndexNum <= 10){
             console.log("Levels 8 to 10");
             uvIndex.style.color = "purple";
            
         }
-        else if(uvIndexNum >11){
+        else if(uvIndexNum > 11){
             console.log("Levels 11+");
                    };
 
@@ -153,15 +153,15 @@ function displayForecast(data){
 
 // Local storage
 const recentSearchEl = document.getElementById("pastSearch");
+let saveList = [];
 
-function storage (citySearchEl) {
+function storage (newCity) {
+  console.log(newCity);  
+    // const newCity = citySearchEl.value;
+    saveList = JSON.parse(localStorage.getItem("Recent")) || []
+    saveList.push(newCity);
 
-
-    
-    localStorage.setItem("Recent", citySearchEl.value);
- 
- 
-    debugger;
+    localStorage.setItem("Recent", JSON.stringify(saveList));
     
 }
 
