@@ -5,13 +5,13 @@ let citySearchEl = document.getElementById("searchcity");
 const currentIconId = document.getElementById("currentIcon");
 const local_Key = "CitySearches";
 
-
 searchEl.addEventListener("click", (event)=>{
     event.preventDefault();
     const city = citySearchEl.value;
     console.log(city);
     getCurrentWeather(city);
     storage(city);
+    history(city);
   
 
 });
@@ -49,30 +49,30 @@ currentIconId.setAttribute("src", `http://openweathermap.org/img/w/${weather.wea
 
 
 // Current City
-const currentCity = document.createElement("h4");
+const currentCity = document.getElementById("currentCity");
 currentCity.textContent = "City "+weather.name;
 
 // date
-const currentDate =  document.createElement("h4")
+const currentDate =  document.getElementById("currentDate")
 currentDate.textContent= moment(weather.dt.value).format("DD MMM YYYY");
 // Current City Temp
 // const currentTemp = document.createElement("h5");
-const tempText = document.createElement("h5");
+const tempText = document.getElementById("tempText");
 tempText.textContent = "Temp: " + weather.main.temp+"°F";
 // Current City Wind 
 // const currentWind = document.createElement("h5");
-const windText = document.createElement("h5");
+const windText = document.getElementById("windText");
 windText.textContent = "Wind: " +  weather.wind.speed+" MPH";
 // Current City Humidty
 // const currentHum = document.createElement("h5");
-const humText = document.createElement("h5");
+const humText = document.getElementById("humText");
 humText.textContent =  "Humidity: " +weather.main.humidity+" %";
 
 currentWeatherId.append(currentIconId, currentCity, currentDate,tempText, windText, humText);
 
 }
 
-const forecastSearch = citySearchEl.value;
+
 const forecastEl = document.querySelector(".forecast");
 
 function daily(lon, lat) {
@@ -83,8 +83,10 @@ function daily(lon, lat) {
     .then(function (data) {
         console.log(data);
         displayForecast(data);
+
+    
         // UV Index Current
-        const uvIndex = document.createElement("h5")
+        const uvIndex = document.getElementById("uvIndex")
         uvIndex.textContent="UV: " +data.current.uvi+ " %";
         const uvIndexNum = data.current.uvi;
       
@@ -115,9 +117,15 @@ function daily(lon, lat) {
 })
 }
 function displayForecast(data){
-    const forecast = 5;
-        for (var i=0;i < forecast; i++){
+ 
+    // add one day and create the start of the day
+    let start = moment().tz(data.timezone).add(1, "day").startOf("day").unix();
     
+    let end = moment().tz(data.timezone).add(6, "day").startOf("day").unix();
+
+    for (var i=0; i < data.daily.length; i++){
+    if (data.daily[i].dt >= start && data.daily[i].dt < end){
+
     const iconImage = document.createElement("img");
     const column = document.createElement("div");
     column.setAttribute("class", "col");
@@ -133,9 +141,6 @@ function displayForecast(data){
     dailyTemp.setAttribute("class","card-text");
     dailyHum.setAttribute("class","card-text");
 
-
-// currentDate.textContent= moment(weather.dt.value).format("D MMM YYYY");
-
     dailyDate.textContent = moment(data.daily[i].dt*1000).format("D MMM YYYY");
     dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
     dailyWind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
@@ -143,9 +148,8 @@ function displayForecast(data){
     iconImage.setAttribute("src", `http://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`)
     cardBody.append(dailyDate, dailyTemp, dailyWind, dailyHum);
     card.append(iconImage, cardBody);
-    column.append(card)
-    forecastEl.append(column);
-
+    forecastEl.appendChild(card);
+    }  
 
     }
 
@@ -160,15 +164,51 @@ function storage (newCity) {
     // const newCity = citySearchEl.value;
     saveList = JSON.parse(localStorage.getItem("Recent")) || []
     saveList.push(newCity);
+    cityList = saveList
+    console.log(cityList);
+    localStorage.setItem("Recent", JSON.stringify(saveList)); 
 
-    localStorage.setItem("Recent", JSON.stringify(saveList));
+    
+}
+
+function history(cityList){
+        pastSearchEl = document.createElement("button"); 
+        pastSearchEl.textContent = cityList;
+        pastSearchEl.classlist = "d-flex w-100";
+        pastSearchEl.setAttribute("type", "submit");
+        pastSearchEl.setAttribute("class", "historyBtn")
+        pastSearchEl.setAttribute("value", cityList)
+    
+        searchHistoryEl.prepend(pastSearchEl);
+
     
 }
 
 
 
+let searchHistoryEl = document.querySelector("#searchHistory")
+let pastSearchEl;
+const historyBtn = document.querySelector(".historyBtn")
+
+searchHistoryEl.addEventListener("click", function(e){
+    e.preventDefault()
+// let city = this.event.target.value
+console.log("from history btn")
+})
+
+// addEventListener("click", (event) => {
+  
 
 
+//     })
+
+    
+
+// });
+
+
+
+// 
 
 
 
