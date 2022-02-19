@@ -7,11 +7,12 @@ const local_Key = "CitySearches";
 
 searchEl.addEventListener("click", (event)=>{
     event.preventDefault();
+    localStorage.reload;
     const city = citySearchEl.value;
     console.log(city);
     getCurrentWeather(city);
     storage(city);
-    history(city);
+    history(city)
   
 
 });
@@ -187,14 +188,20 @@ function history(cityList){
 
 
 let searchHistoryEl = document.querySelector("#searchHistory")
-let pastSearchEl;
+// let pastSearchEl;
 const historyBtn = document.querySelector(".historyBtn")
 
-searchHistoryEl.addEventListener("click", function(e){
+searchHistoryEl.addEventListener("click", function(e) {
     e.preventDefault()
-// let city = this.event.target.value
-console.log("from history btn")
-})
+    
+let city = this.event
+
+console.log(".historyBtn");
+console.log(city);
+
+});
+
+
 
 // addEventListener("click", (event) => {
   
